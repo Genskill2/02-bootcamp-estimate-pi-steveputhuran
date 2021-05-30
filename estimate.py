@@ -1,5 +1,24 @@
 import math
 import unittest
+import random
+
+def wallis(n):
+    pi = 1
+    while n>0:
+        pi = (pi*((4*(n**2))/((4*(n**2))-1)))
+        n= n-1
+    pi = pi*2
+    return pi
+
+def monte_carlo(total):
+    c = 0
+    for i in range(0, total):
+        x = random.random()
+        y = random.random()
+        if (x**2+y**2)**0.5 < 1.0:
+            c = c + 1
+    pi = (float(c)/total)*4
+    return pi
 
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
